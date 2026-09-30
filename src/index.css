@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Noto Serif', Georgia, 'Times New Roman', serif;
+  --color-navy: #00205B;
+  --color-clinical: #0077C8;
+  --color-clinical-dark: #005fa3;
+  --color-ink: #111111;
+  --color-body: #4b5563;
+  --color-line: #e5e7eb;
+  --color-canvas: #f3f4f6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #4b5563;
+    overflow-x: hidden;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    color: #111111;
+    letter-spacing: -0.01em;
+  }
+
+  /* Offset jangkar agar tidak tertutup navbar fixed (64px) */
+  section[id] {
+    scroll-margin-top: 76px;
+  }
+
+  /* Cegah teks / nilai panjang (NIB, SK, rekening) meluber di layar kecil */
+  .break-all {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Floating WhatsApp animations */
+@keyframes wa-ring {
+  0% { transform: scale(1); opacity: 0.55; }
+  80%, 100% { transform: scale(1.55); opacity: 0; }
+}
+
+@keyframes wa-wiggle {
+  0%, 86%, 100% { transform: rotate(0deg); }
+  88% { transform: rotate(-14deg); }
+  90% { transform: rotate(11deg); }
+  92% { transform: rotate(-7deg); }
+  94% { transform: rotate(5deg); }
+  96% { transform: rotate(-2deg); }
+}
+
+.animate-wa-ring {
+  animation: wa-ring 2s ease-out infinite;
+}
+
+.animate-wa-wiggle {
+  animation: wa-wiggle 3.2s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0284c7;
+}
